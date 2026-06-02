@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>佐藤一歩 様｜morich キャリアご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E60012;
+    --red-light: #fff0f0;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f5f5; color: var(--gray-900); line-height: 1.75; }
+  header { background: #fff; border-bottom: 3px solid var(--red); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  header img { height: 38px; }
+  header .htxt p:first-child { font-size: 12px; color: var(--gray-500); }
+  header .htxt p:last-child { font-size: 17px; font-weight: 900; }
+  .nav-bar { background: var(--gray-900); padding: 0 12px; overflow-x: auto; white-space: nowrap; }
+  .nav-bar a { display: inline-block; padding: 13px 18px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav-bar a:hover { color: #fff; border-bottom-color: var(--red); }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 14px 64px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 40px; overflow: hidden; border-top: 5px solid var(--red); }
+  .card-inner { padding: 28px 28px 36px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid var(--red); color: var(--red); background: var(--red-light); }
+  .badge-blue { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+  .co-name { font-size: clamp(22px, 5vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
+  .co-url { font-size: 12px; margin-bottom: 22px; }
+  .co-url a { color: var(--blue-600); text-decoration: none; }
+  .co-url a:hover { text-decoration: underline; }
+  .overview { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .overview h3 { font-size: 10px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .overview table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .overview tr { border-bottom: 1px solid var(--blue-100); }
+  .overview tr:last-child { border-bottom: none; }
+  .overview th { text-align: left; padding: 6px 14px 6px 0; color: var(--gray-600); font-weight: 700; width: 100px; vertical-align: top; white-space: nowrap; }
+  .overview td { padding: 6px 0; color: var(--gray-700); }
+  .highlight { background: var(--red-light); border: 2px solid var(--red); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .highlight h3 { font-size: 13px; font-weight: 900; color: var(--red); margin-bottom: 8px; }
+  .highlight p, .highlight li { font-size: 13px; color: #7a0000; margin-bottom: 4px; }
+  .highlight ul { padding-left: 16px; }
+  .accordion { margin-bottom: 16px; }
+  .acc-header { display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; padding: 12px 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; user-select: none; transition: background 0.15s; }
+  .acc-header:hover { background: var(--gray-100); }
+  .acc-header .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); border-left: 3px solid var(--red); padding-left: 8px; margin-bottom: 5px; display: block; }
+  .acc-preview { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+  .acc-header-left { flex: 1; }
+  .acc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gray-200); font-size: 13px; transition: transform 0.25s, background 0.2s; }
+  .acc-header.open .acc-icon { transform: rotate(180deg); background: var(--red); color: #fff; }
+  .acc-header.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .acc-body { display: none; padding: 20px 18px; border: 1px solid var(--gray-200); border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .acc-body.open { display: block; }
+  .acc-body p { margin-bottom: 10px; }
+  .acc-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .acc-body li { margin-bottom: 6px; }
+  .job-wrap { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .job-header { background: var(--gray-900); color: #fff; padding: 14px 18px; display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; user-select: none; }
+  .job-title-text { font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+  .job-preview { font-size: 11px; color: #aaa; line-height: 1.5; }
+  .job-icon { width: 26px; height: 26px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.15); font-size: 12px; transition: transform 0.25s; }
+  .job-header.open .job-icon { transform: rotate(180deg); }
+  .job-body { display: none; padding: 20px 18px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .job-body.open { display: block; }
+  .job-body p { margin-bottom: 10px; }
+  .job-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .job-body li { margin-bottom: 6px; }
+  .job-section { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 8px; }
+  .tag-must { background: var(--red); color: #fff; }
+  .tag-want { background: var(--gray-600); color: #fff; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; border-left: 3px solid var(--red); padding-left: 8px; margin: 22px 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lbtn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; background: var(--gray-900); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .lbtn:hover { background: var(--red); }
+  .lbtn-out { background: transparent; color: var(--gray-900); border: 2px solid var(--gray-200); }
+  .lbtn-out:hover { background: var(--gray-900); color: #fff; border-color: var(--gray-900); }
+  footer { text-align: center; padding: 28px 16px; font-size: 11px; color: var(--gray-500); border-top: 1px solid var(--gray-200); background: #fff; }
+  @media(max-width:600px){ .card-inner{ padding: 18px 14px 24px; } .overview th { width: 80px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="morich_logo.jpg" alt="morich">
+  <div class="htxt">
+    <p>morich キャリアご提案資料</p>
+    <p>佐藤一歩 様</p>
+  </div>
+</header>
+<nav class="nav-bar">
+  <a href="#k1">1. 株式会社coly（コリー）</a>
+  <a href="#k2">2. 株式会社テー・オー・ダブリュー</a>
+  <a href="#k3">3. カバー株式会社</a>
+</nav>
+<main>
+
+<div class="card" id="k1"><div class="card-inner">
+  <div class="badges"><span class="badge">新規事業責任者候補</span><span class="badge badge-blue">東証グロース</span></div>
+  <div class="co-name">株式会社coly（コリー）</div>
+  <div class="co-url"><a href="https://colyinc.com/" target="_blank">https://colyinc.com/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都港区三田1-4-1 住友不動産麻布十番ビル 3階</td></tr><tr><th>設立</th><td>2014年</td></tr><tr><th>上場区分</th><td>東証グロース</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>女性向けゲームエンタメ企業であるcolyが掲げるVISIONは、「もっと、面白く」と、それを実現してくためのVALUE「お客様ファースト」「変化と挑戦」「プロフェッショナル」「夢中」です。</li><li>代表タイトルは「魔法使いの約束」「Break My Case」「Stand My HERO」。</li><li>2019年に上場。ゲーム事業以外にもグッズ販売、音楽イベントなど、ゲーム関連事業で収益を上げており、グッズ収益は全体の3～4割を占める。</li><li>主力タイトル「魔法使いの約束」はアニメ化も行い、幅広いメディア展開を図っている。</li><li>グッズ収益が3～4割を占め、スマホゲームに加えてグッズ・イベントで収益基盤を確保。</li><li>シナリオは心理描写に優れ、女性ユーザーに強く支持されている。タップ数が多く、深い物語体験を提供。</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">2014年に設立、女性向けモバイルゲームを中心に、IP（知的財産）を軸とした多角的な事業展開を行っています。2021年には東証マザーズ（現グロース）市場へ上場。「もっと、面白く」を企業理念に掲げ、ユーザー目線での高品質なコンテンツ制作と、IPの多方面への展開を通じて、持続的な成長を目指しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>2014年に設立、女性向けモバイルゲームを中心に、IP（知的財産）を軸とした多角的な事業展開を行っています。2021年には東証マザーズ（現グロース）市場へ上場。「もっと、面白く」を企業理念に掲げ、ユーザー目線での高品質なコンテンツ制作と、IPの多方面への展開を通じて、持続的な成長を目指しています。</p><p>主力タイトルには、パズルゲーム『スタンドマイヒーローズ』やファンタジーRPG『魔法使いの約束』などがあり、いずれもアニメ化や舞台化、グッズ展開などのメディアミックス戦略を通じて、IPの価値を高めています。特に『スタンドマイヒーローズ』は、リニューアルや新章の追加により、長期的なファンの維持と新規ユーザーの獲得を図っています。</p><p>強みは、社員の約7割が女性で平均年齢が30歳前後という、ユーザーに近い目線を持つ組織体制にあります。これにより、トレンドを敏感に捉えたコンテンツ制作が可能となり、ユーザーのニーズに即したサービス提供が実現されています。また、IPを中心としたグッズ販売やイベント開催、飲食事業など、ゲーム外での展開にも注力しています。例えば、池袋PARCOにオープンした「coly cafe!」では、作品の世界観を体験できる空間を提供し、ファンとの接点を広げています。現在はIPの多角的な展開による収益基盤の強化が進んでいます。</p><p><strong>代表取締役社長　中島瑞木氏　中島杏奈氏 姉妹</strong><br>1988年生まれ。双子の姉妹として2014年に同社を設立しました。姉の瑞木氏は東京大学教養学部在学中にインターネットビジネスに触れ、エンターテインメント業界への関心を深めました。卒業後は外資系証券会社での勤務を経て、妹の杏奈氏と共にcolyを創業。2021年には「ウーマン・オブ・ザ・イヤー2022」の大賞を受賞するなど、女性起業家のロールモデルとしても注目されています。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 新規事業責任者候補</div>
+          <div class="job-preview">エンタメ企業で0→100の事業創造に挑戦する新規事業責任者候補</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>【新規事業責任者候補】</strong><br>エンタメ企業で0→100の事業創造に挑戦してみませんか</p><p><strong>■募集背景</strong><br>当社は女性向けゲーム市場を主要ドメインとしてここ数年で大きな成長を遂げることができました。今後益々大きな成長を実現していくために、既存事業の更なる拡大と新たな事業分野へのチャレンジを積極的に行っていく予定です。更なるcolyの成長の為、新規事業に立ち上げから携わり、事業拡大にコミットメントしてくださる方を募集いたします。チームひいては会社を率い新規事業を推し進めることに挑戦したいと感じてくださる方のご応募をお待ちしております。</p><p><strong>■職務内容</strong><br>創立から8年で東証へ上場、大ヒットIPを複数持ち事業を拡大中の当社にて、さらなる飛躍のための新規事業責任者をお任せいたします。</p><p><strong>【具体的には】</strong></p><ul><li>新規事業の企画、立案、進行、戦略</li><li>新規事業に係る、運営全般</li></ul><p><strong>■配属先：</strong>社長直下</p><p><strong>応募資格</strong></p><p><span class='tag tag-must'>MUST</span></p><ul><li>新規事業の立ち上げ、運用、プロジェクトマネジメント経験（業界、ジャンルは問いません）</li><li>10名以上の組織マネジメント経験</li></ul><p><span class='tag tag-want'>WANT</span></p><ul><li>エンタメ業界での就業経験</li><li>AIやメタバース領域に知識、知見をお持ちの方</li></ul><p><strong>求める人物像</strong></p><ul><li>物事を前向きに捉え、事業を推進することのできる方</li><li>メンバーや経営層を巻き込み、物事を進めることのできる方</li><li>ゲームやアニメなどエンタメへの興味関心がある方</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 基本出社</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://colyinc.com/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k2"><div class="card-inner">
+  <div class="badges"><span class="badge">チーフアカウントエキスパート</span><span class="badge badge-blue">東証スタンダード</span></div>
+  <div class="co-name">株式会社テー・オー・ダブリュー</div>
+  <div class="co-url"><a href="https://tow.co.jp/" target="_blank">https://tow.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都港区虎ノ門四丁目3番13号 ヒューリック神谷町ビル3F</td></tr><tr><th>設立</th><td>1976年</td></tr><tr><th>従業員数</th><td>約300名</td></tr><tr><th>上場区分</th><td>東証スタンダード</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>東証スタンダード市場上場、自己資本比率75.1%（2023年6月末時点）と、非常に強固で安定した財務基盤を持っています。</li><li>これまでの強固な代理店経由の案件に加え、現在は直クライアント（Google、Amazon、大手飲料メーカーなど）の拡大とエンターテインメント領域への拡張を目指す変革期です。</li><li>単なる受託ではなく、クライアントの課題分析からコミュニケーション戦略立案、メディアプランニングと、企画から納品まで一気通貫で手掛けられる大きな裁量を持ちながら、統合マーケティング視点でダイナミックに活躍できます。</li><li>「営業プロデューサー専門職」として、成果と貢献が評価・報酬にダイレクトに反映されやすい人事制度が適用されます。</li><li>正社員はもちろんのこと、これまでの知見を活かして業務委託としての参画も大歓迎される柔軟な環境です。</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">1976年の設立以来、イベントの企画・制作・運営を一貫して手がけ、業界を牽引してきた「体験のプロフェッショナル」集団です。大阪万博以降のイベント黎明期から業界のリーダーシップを取り、初代ウォークマン発売時のキャンペーンや国際スポーツ大会に関連する大型プロジェクト「FIFA 2002ワールドカップ抽選会」など、多くの象徴的なイベントを手がけてきた歴史があります。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>1976年の設立以来、イベントの企画・制作・運営を一貫して手がけ、業界を牽引してきた「体験のプロフェッショナル」集団です。大阪万博以降のイベント黎明期から業界のリーダーシップを取り、初代ウォークマン発売時のキャンペーンや国際スポーツ大会に関連する大型プロジェクト「FIFA 2002ワールドカップ抽選会」など、多くの象徴的なイベントを手がけてきた歴史があります。大手広告代理店（電通・博報堂・ADKなど）を主要取引先に持ち、国内有数のナショナルクライアント案件を安定的に受注しています。</p><p>事業の中核は、イベントやプロモーションの企画・制作・運営・演出ですが、近年はリアルとデジタルを横断する「体験デザイン型プロモーション」へと進化。リアルイベントや展示会に加え、Web・映像制作、デジタルプロモーション、SNSやオンライン施策、e-Sports分野まで幅広い領域をカバーしています。また、広告代理店経由の案件に加え、クライアントと直接向き合うプロジェクトも増加しており、より上流からブランドの課題解決に関わる機会も多くなっています。加えて、OOH広告を扱う企業と連携した「TOOHプロジェクト」など、新たなプロモーション領域にも積極的に取り組んでいます。</p><p>最大の優位性は、「企画」と「制作」の分業体制が確立している点です。担当者が一貫して行う他社では案件がパターン化しがちですが、同社は各部署のエキスパートが専門性を発揮することで年間3,000本もの企画を構築し、独自のノウハウとアイデアを創造しています。年間売上高は連結で177億円（2025年6月末時点）、従業員約300名という圧倒的な実績を誇ります。</p><p>大手広告代理店からの案件が8割を占める強固な基盤を持ちつつ、現在は事業会社と直接取引を行う「直クライアント」向けの案件拡大や、エンタメ領域への拡張に注力しています。デジタルやPRを掛け合わせた統合プロモーションにより、人の心を動かす「体験価値」をゼロベースから創り上げることができる、非常に魅力的な環境です。</p><p><strong>代表取締役社長　村津 憲一 氏</strong><br>1977年1月31日生、東京都出身。学習院大経卒、2000年テー・オー・ダブリュー入社。第一本部長、体験デザイン本部長などを経て、2015年取締役、2020年代表取締役副社長兼COO。2022年1月より現任。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 チーフアカウントエキスパート（営業プロデューサー専門職／直クライアント）</div>
+          <div class="job-preview">新規クライアントの獲得から提案型プロデュースを推進する営業プロデューサー</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>■PURPOSE「新しい時代の体験を創る」</strong><br>イベントやプロモーションなどの体験領域を軸に様々なチャレンジに取り組んできたTOW。社会・生活のデジタル化、生活者の価値観の多様化が進み、変化し続ける世の中においても、変わらずに大切にしていくこと。時代や世の中の変化に応じて、柔軟に適応し最適なかたちに変えていくこと。TOWは、普遍的な強みである「体験価値」を軸にしながら、若い力と柔軟な発想力で、新たな可能性を生み出していきます。全ては、人々に感動や共感、ワクワクを届けるために。</p><p><strong>■VISION「体験価値をコアに、成果をデザインする」</strong><br>企業と顧客がダイレクトにつながり、オフラインとオンラインをシームレスに行き来する時代。TOWの強みである情緒や感性に訴えかける「体験価値」は、デジタルプラットフォーム時代においても成果の最大化に向けて有効に作用する価値であると考えております。その体験価値をコアとしたプランニングとプロデュースを駆使して、「魅力的なコンテンツを創る力」と「プラットフォームを活性化する力」を発揮することで、新規顧客の獲得、既存顧客の育成・活性化に貢献し、クライアントの成果の最大化を追求します。※体験価値とは、情緒的価値・感性的価値・機能的価値を含めて顧客心理に訴えかける価値を指します。</p><p><strong>■具体的な仕事内容</strong><br>新規営業拡大プロデューサーとして、新規クライアントの獲得から、クライアント課題に向き合う提案型プロデュースを推進していただきます！</p><p><strong>＜業務内容＞</strong></p><ul><li>広告代理店からの受託ではなく、直接事業会社からプロモーション案件を受注します。</li><li>新規クライアント・案件の開拓や営業戦略の立案、営業機会を自ら創出していただきます。</li><li>クライアント課題に対して提案できることも求められます。コミュニケーション戦略立案からメディアプランニング、プロモーション企画、SNS/インフルエンサー活用施策など、統合マーケティング視点での提案・営業推進をお任せいたします。</li><li>対応領域は、イベント（行政・文化/スポーツイベント、インナーイベント、PR発表会などのイベント、SPイベント）だけでなく、デジタルマーケティング、PR、映像、WEBやSNS、SP（ノベルティグッズ・印刷）、キャンペーンなど幅広い施策に取り組んでいます。</li><li>クライアントの事業サイドのニーズを把握し、企画段階から提案し、制作、実施及び納品するまで実行力を持って制作します。</li><li>まずはプレイヤーとしての個人業績、個人受注力を高めていただくことがミッションですが、ゆくゆくは若手営業人材へのナレッジ還元や、チームの育成をお任せすることもあります。</li></ul><p><strong>応募資格</strong></p><p><span class='tag tag-must'>MUST</span></p><ul><li>企業の営業推進や、マーケティング、販促などにおいて知見があり、課題に沿った提案ができる方</li><li>新規取引先の開拓・獲得において実績のある方</li><li>広告代理店、広告等制作会社での営業経験5年～10年以上</li></ul><p><span class='tag tag-want'>WANT</span></p><ul><li>中～大規模な案件のイベントプロモーション提案・制作進行管理経験</li><li>メディアプランニング、プロモーション企画、SNS/インフルエンサー活用施策など、統合マーケティング視点での提案・営業および制作推進のご経験をお持ちの方</li></ul><p><strong>求める人物像</strong></p><ul><li>お客様のために何かをしてあげたいという気持ちが、仕事のモチベーションになっている。</li><li>法人営業の新規開拓等の営業経験があり、営業が好きな方。</li><li>常にアンテナを張り、新しいものを発見し、それを仕事に活かしていける創造力や発想力のある方。</li><li>快活でコミュニケーション能力、交渉力がある方。</li><li>新規開拓、拡大に向けた推進メンバーとなるため、強い意志と実行力のある方。</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">❌ 副業不可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://tow.co.jp/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k3"><div class="card-inner">
+  <div class="badges"><span class="badge">ヘッドプランニングディレクター</span><span class="badge badge-blue">東証グロース</span></div>
+  <div class="co-name">カバー株式会社</div>
+  <div class="co-url"><a href="https://cover-corp.com/" target="_blank">https://cover-corp.com/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都港区三田3-5-19 住友不動産東京三田ガーデンタワー</td></tr><tr><th>上場区分</th><td>東証グロース</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>弊社カウンターパートの前田さま（MD事業管掌役員）は、2024年6月よりジョイン。実は全くこの世界には興味がなく・・入社すると同じような方がたくさんいらしたそうです。たくさんのオファーがありましたが、ビジネスとして強い可能性を感じられてご入社されています。</li><li>VTuberという世界には全く興味もなかったものの、「つくろう。世界が愛するカルチャーを。」というカバー社が大きく掲げるmissionに共感をしてジョイン。エンタメを通して、日本の強みをレバレッジしていく。VTuberというサブカルチャー・・ではなく、もっと壮大な・・日本発信でカルチャーを作っていくことへの共感、未来に向けた展望。</li><li>上場1期目、売上150％、営業利益162％。高収益で、今後もまだまだ伸びしろがあります</li><li>日本が生んだエンタメビジネスで、海外市場にうってでていくタイミング、世界最大級のVtuberビジネスを展開</li><li>総登録者数8800万人・・ネット上でのイベントを開催すると400・500万人が集まる・・</li><li>急激な成長で人の確保と組織作りが追いついていないというのが課題です</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">世界最大級のVTuber事務所「ホロライブプロダクション」の運営をはじめ、世界で通用する新しいバーチャルタレントの文化の創出やメタバース事業を展開する次世代のITエンターテインメント企業です。運営するVTuber事務所「ホロライブプロダクション」は、日本の他にも、インドネシアや北米に複数のバーチャルタレントが所属、様々なコンテンツをグローバルに配信しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>世界最大級のVTuber事務所「ホロライブプロダクション」の運営をはじめ、世界で通用する新しいバーチャルタレントの文化の創出やメタバース事業を展開する次世代のITエンターテインメント企業です。運営するVTuber事務所「ホロライブプロダクション」は、日本の他にも、インドネシアや北米に複数のバーチャルタレントが所属、様々なコンテンツをグローバルに配信しています。（YouTubeチャンネル総登録者数8,800万人：2024年3月末時点）</p><p>&quot;VTuber&quot; は2016年に生まれた日本発のインターネットカルチャーです。このVTuberをはじめとした日本の二次元コンテンツを世界へと浸透させるべく、VRやARといった先端領域において、独自の配信システムを自社開発。 コンテンツ開発にとどまらず、配信における技術研究を社内で行うことで、これまでにないバーチャルエンターテインメントの提供を可能にしています。</p><p>2023年3月に東証グロース市場へ上場。2024年3月期は売上高50％増、営業益62％増と、高い水準での成長を継続し、上場区分を&quot;東証グロース→プライムに変更すると発表されています。2024年には北米に初となる海外拠点「COVER USA」を開設。タイアップやライセンシングの分野でも、IPの影響力拡大で取引先企業も拡大しており、これは今後さらに強まることが予想されます。</p><p><strong>代表取締役社長CEO　谷郷 元昭氏</strong><br>慶應義塾大学理工学部を卒業後、イマジニア株式会社で株式会社サンリオと提携したゲームのプロデュースを担当後、テレビ局や出版社と提携した携帯公式サイトを運営する事業を統括。化粧品口コミサイト@cosme運営の株式会社アイスタイルでのEC事業立ち上げ、モバイル広告企業、株式会社インタースパイア（現ユナイテッド）の創業に参画後、株式会社サンゼロミニッツを創業し、日本初のGPS対応スマートフォンアプリ「30min.」を主軸としたO2O事業を展開し、株式会社イードへ売却。Forbes JAPAN「日本の起業家ランキング2023」第3位にランクイン</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 ヘッドプランニングディレクター（プロダクション施策全体設計）</div>
+          <div class="job-preview">ホロライブプロダクション全体やユニット単位のプロジェクト進行設計、全体指揮</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>■概要</strong><br>当社が運営するホロライブプロダクションのさらなる成長のために、プロダクション全体やユニット単位のプロジェクト進行設計、全体の指揮をとっていただきます。当社プロダクションやファンの方の動向やニーズを深く理解した上で、各セクションで行っているさまざまな施策の効果を最大化するため、施策のリリースタイミングの設計、ディレクションをお任せします。</p><p><strong>■業務内容詳細</strong></p><ul><li>プロダクション効果最大化のための全体施策の設計</li><li>配信番組企画、プロダクション企画、タレントマネージャーなどの各セクションが担当しているプロジェクト進捗確認</li><li>プロダクション戦略に沿って各セクションマネージャーと連携して進行管理</li><li>プロジェクト成功のための他部署連携・交渉</li></ul><p><strong>応募資格</strong></p><p><span class='tag tag-must'>MUST</span></p><ul><li>50名以上の中規模以上のプロジェクトでのプロジェクトマネジメント経験</li><li>複数セクションが存在するプロジェクトでのプロジェクトマネジメント経験</li><li>エンターテインメントコンテンツの開発・運用経験（特に運用経験を求めます）</li><li>VTuberビジネスの知見</li><li>マーケティングをもとに戦略設計・ディレクションをした経験</li></ul><p><span class='tag tag-want'>WANT</span></p><ul><li>100名以上の大型プロジェクトのプロジェクトマネジメント経験</li><li>Vtuber業界での実務経験</li><li>キャラクターIPを扱うプロジェクトのプロジェクトマネジメント経験</li><li>YouTubeチャンネル運用経験</li><li>コンテンツの大型施策をプロモーションと連動しながら効果の最大化を指揮した経験</li><li>コンテンツとプロモーションの整合性をとり、効果最大化のための年間計画立案経験</li></ul><p><strong>求める人物像</strong></p><ul><li>当社のMISSION/VALUEに共感いただける方</li><li>エンタメが好きで、どのような企画を実現すればユーザーが喜ぶかをビジネス視点で考えられる方</li><li>チームワークを大切にできる方</li><li>主体的にものごとを考え、自ら行動できる方</li><li>雑務や細かい仕事にもしっかり取り組める、素直で誠実な方</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">✅ 副業可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://cover-corp.com/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+</main>
+<footer>
+  <p>本資料はmorichが佐藤一歩 様のためにご用意した個人情報を含む機密資料です。無断転用・転載はご遠慮ください。</p>
+  <p style="margin-top:6px;">© 株式会社morich</p>
+</footer>
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+  function toggleJob(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
